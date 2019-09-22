@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'schema_io' => [
+      'id' => env('SCHEMA_IO_ID'),
+      'secret' => env('SCHEMA_IO_SECRET'),
+      'public' => env('SCHEMA_IO_PUBLIC'),
+    ],
+
 ];

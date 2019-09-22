@@ -9,7 +9,15 @@
 namespace App\Services;
 
 
+use Schema\Client;
+
 class ProductService
 {
+    private $api;
+
+    public function __construct(Client $api)
+    {
+        $this->$api = $api;
+    }
 
 }
