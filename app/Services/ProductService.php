@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 use Schema\Client;
+use Schema\Collection;
 
 class ProductService
 {
@@ -18,6 +19,12 @@ class ProductService
     public function __construct(Client $api)
     {
         $this->$api = $api;
+    }
+
+    public function all(): Collection
+    {
+        return $this->api->get('/products');
+
     }
 
 }

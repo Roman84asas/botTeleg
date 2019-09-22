@@ -21,7 +21,7 @@ class CategoryService
         $this->api = $api;
     }
 
-    public function all() : Collection
+    public function all(): Collection
     {
         return $this->api->get('/categories', [
            'limit' => 1000,
