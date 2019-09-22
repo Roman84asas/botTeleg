@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 use Schema\Client;
+use Schema\Collection;
 
 class CategoryService
 {
@@ -20,7 +21,7 @@ class CategoryService
         $this->api = $api;
     }
 
-    public function all()
+    public function all() : Collection
     {
         return $this->api->get('/categories', [
            'limit' => 1000,

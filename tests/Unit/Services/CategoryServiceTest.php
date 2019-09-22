@@ -11,6 +11,7 @@ namespace Tests\Unit\Services;
 
 use App\Services\CategoryService;
 use Schema\Client;
+use Schema\Collection;
 use Tests\TestCase;
 
 /**
@@ -29,7 +30,8 @@ class CategoryServiceTest extends TestCase
 
     public function test_all()
     {
-
+        $result = $this->service->all();
+        $this->assertInstanceOf(Collection::class, $result);
     }
 
 }
