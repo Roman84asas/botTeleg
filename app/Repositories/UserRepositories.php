@@ -19,21 +19,17 @@ class UserRepositories extends AbstractRepositories
     }
 
 
-    /**
-     * @param int $id
-     * @param string $firstname
-     * @param string $lastname
-     * @param string $username
-     * @return User|\Eloquent|\Illuminate\Database\Eloquent\Model
-     */
+
     public function store(int $id, string $firstname, string $lastname, string $username)
     {
-        return $this->entity->create([
+        $values = [
             'chat_id' => $id,
             'first_name' => $firstname,
             'last_name' => $lastname,
             'username' => $username,
-        ]);
+        ];
+
+        return $this->entity->firstOrCreate(['chat_id' => $id], $values);
     }
 
 }

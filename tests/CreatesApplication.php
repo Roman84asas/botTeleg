@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
+use Mockery;
 
 trait CreatesApplication
 {
@@ -18,5 +19,27 @@ trait CreatesApplication
         $app->make(Kernel::class)->bootstrap();
 
         return $app;
+    }
+
+    /**
+     * @return \Faker\Generator
+     */
+    protected function facker(): \Faker\Generator
+    {
+        return Faker\Factory::create();
+    }
+
+
+    /**
+     * @param string $class
+     * @return Mockery\MockInterface
+     */
+    protected function mock(string $class): \Mockery\MockInterface
+    {
+        $object = Mockery::mock($class);
+
+        $this->app->bind($class, $object);
+
+        return $object;
     }
 }

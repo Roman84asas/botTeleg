@@ -18,18 +18,9 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereChatId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereFirstName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereLastName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Entities\User whereUsername($value)
  * @mixin \Eloquent
+ *
+ * @method static user firstOrCreate()
  */
 class User extends AbstractEntity
 {
@@ -41,24 +32,9 @@ class User extends AbstractEntity
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+        'chat_id',
+        'first_name',
+        'last_name',
+        'username',
     ];
 }
