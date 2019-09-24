@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 24.09.2019
- * Time: 16:26
- */
 
 namespace App\Http\Controllers\Webhooks;
 
@@ -29,6 +23,8 @@ class TelegramController extends Controller
             $user->getFirstName(),
             $user->getLastName()
         );
+
+
     }
 
 }

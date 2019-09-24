@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 24.09.2019
- * Time: 18:52
- */
 
 namespace App\Repositories;
 
@@ -24,9 +18,16 @@ class UserRepositories extends AbstractRepositories
         parent::__construct($user);
     }
 
-    public function store()
+    /**
+     * @param integer $id
+     * @param string $firstname
+     * @param string $lastname
+     */
+    public function store(integer $id, string $firstname, string $lastname)
     {
+        return $this->entity->create([
 
+        ]);
     }
 
 }
