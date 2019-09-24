@@ -1,18 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 24.09.2019
- * Time: 18:56
- */
 
 namespace App\Repositories;
 
+
+use App\Entities\Message;
+use App\Entities\User;
 
 abstract class AbstractRepositories
 {
     /**
      * AbstractRepositories constructor.
+     * @var \Eloquent|User|Message
      * @param \Eloquent $entity
      */
     protected $entity;

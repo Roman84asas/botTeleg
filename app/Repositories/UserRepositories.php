@@ -18,15 +18,21 @@ class UserRepositories extends AbstractRepositories
         parent::__construct($user);
     }
 
+
     /**
-     * @param integer $id
+     * @param int $id
      * @param string $firstname
      * @param string $lastname
+     * @param string $username
+     * @return User|\Eloquent|\Illuminate\Database\Eloquent\Model
      */
-    public function store(integer $id, string $firstname, string $lastname)
+    public function store(int $id, string $firstname, string $lastname, string $username)
     {
         return $this->entity->create([
-
+            'chat_id' => $id,
+            'first_name' => $firstname,
+            'last_name' => $lastname,
+            'username' => $username,
         ]);
     }
 

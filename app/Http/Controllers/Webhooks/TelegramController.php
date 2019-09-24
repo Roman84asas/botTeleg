@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Webhooks;
 
 
 use App\Http\Controllers\Controller;
+use App\Repositories\MessageRepasitories;
 use App\Repositories\UserRepositories;
 use Telegram;
 
 class TelegramController extends Controller
 {
 
-    public function process(UserRepositories $users)
+    public function process(UserRepositories $users, MessageRepasitories $messages)
     {
         $update = Telegram::bot()->getWebhookUpdate();
 
@@ -18,10 +19,19 @@ class TelegramController extends Controller
 
         $user = $message->getFrom();
 
-        $users->store(
+        //save User
+        $user = $users->store(
             $user->getId(),
-            $user->getFirstName(),
-            $user->getLastName()
+            $user->getFirstName() ?? '',
+            $user->getLastName() ?? '',
+            $user->getUsername() ?? ''
+        );
+
+        //Save Message
+        $messages->store(
+            $user,
+            $message->getMessageId(),
+            $message->getText() ?? ''
         );
 
 
